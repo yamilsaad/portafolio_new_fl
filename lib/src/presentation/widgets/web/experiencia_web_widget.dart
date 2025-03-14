@@ -142,17 +142,14 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
                                               style: TextStyle(
                                                 fontSize: _screenWidth * 0.02,
                                                 fontWeight: FontWeight.bold,
-                                                fontFamily:
-                                                    'AtkinsonHyperlegibleNext',
+                                                fontFamily: 'Rubik',
                                               ),
                                             ),
                                             Text(
                                               step["description"],
                                               style: TextStyle(
                                                 fontSize: _screenWidth * 0.016,
-                                                color: Colors.grey[700],
-                                                fontFamily:
-                                                    'AtkinsonHyperlegibleNext',
+                                                color: Color(0xff21E6C1),
                                               ),
                                             ),
                                             SizedBox(

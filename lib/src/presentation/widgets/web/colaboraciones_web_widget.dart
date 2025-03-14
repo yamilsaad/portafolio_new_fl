@@ -200,9 +200,12 @@ class _HoverableCard2State extends State<_HoverableCard2> {
               SizedBox(height: _screenHeight * 0.015),
               SizedBox(
                 width: _screenWidth * 0.4,
-                child: Text(widget.subtitle,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontWeight: FontWeight.bold)),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                  child: Text(widget.subtitle,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(fontWeight: FontWeight.bold)),
+                ),
               ),
             ],
           ),
@@ -262,13 +265,16 @@ class _HoverableCard2State extends State<_HoverableCard2> {
                     color: _isHovered ? Colors.black87 : Colors.transparent,
                   ),
                   alignment: Alignment.center,
-                  child: Text(
-                    widget.title,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: widget.screenWidth * 0.016,
-                      fontWeight: FontWeight.bold,
-                      color: _isHovered ? Colors.white : Colors.transparent,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: Text(
+                      widget.title,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: widget.screenWidth * 0.016,
+                        fontWeight: FontWeight.bold,
+                        color: _isHovered ? Colors.white : Colors.transparent,
+                      ),
                     ),
                   ),
                 ),

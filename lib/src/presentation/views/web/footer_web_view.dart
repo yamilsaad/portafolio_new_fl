@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class FooterWebView extends StatelessWidget {
   const FooterWebView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height * 0.35;
+    final screenHeight = MediaQuery.of(context).size.height * 0.3;
     final screenWidth = MediaQuery.of(context).size.width;
 
     return Container(
@@ -28,7 +29,7 @@ class FooterWebView extends StatelessWidget {
                   Text(
                     "Front End Engineer",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff21E6C1),
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
@@ -45,7 +46,7 @@ class FooterWebView extends StatelessWidget {
               ),
 
               // Enlaces rápidos
-              Row(
+              /* Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _footerLink("¿Tienes una propuesta?"),
@@ -62,27 +63,30 @@ class FooterWebView extends StatelessWidget {
                   ),
                   _footerLink("Desing UX/UI"),
                 ],
-              ),
+              ),*/
 
               // Redes Sociales
               Row(
                 children: [
-                  _socialIcon(FontAwesomeIcons.facebook),
-                  _socialIcon(FontAwesomeIcons.xTwitter),
-                  _socialIcon(FontAwesomeIcons.linkedin),
-                  _socialIcon(FontAwesomeIcons.instagram),
+                  //_socialIcon(FontAwesomeIcons.facebook, screenWidth),
+                  //_socialIcon(FontAwesomeIcons.xTwitter, screenWidth),
+                  _socialIcon(FontAwesomeIcons.linkedin, screenWidth,
+                      "https://www.linkedin.com/in/yamilsaad/"),
+                  _socialIcon(FontAwesomeIcons.instagram, screenWidth,
+                      "https://www.instagram.com/saad_yamil/"),
                 ],
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          SizedBox(height: screenHeight * 0.025),
           // Línea divisoria y Derechos
           Divider(color: Colors.white38),
-          const SizedBox(height: 10),
+          SizedBox(height: screenHeight * 0.015),
           Center(
             child: Text(
-              "© 2025 Soy-Dev. Todos los derechos reservados.",
-              style: TextStyle(color: Colors.white70, fontSize: 14),
+              "© 2025 Yamil Saad - Flutter Developer. Todos los derechos reservados.",
+              style: TextStyle(
+                  color: Colors.white70, fontSize: screenWidth * 0.014),
             ),
           ),
         ],
@@ -100,10 +104,28 @@ class FooterWebView extends StatelessWidget {
     );
   }
 
-  Widget _socialIcon(IconData icon) {
+  Widget _socialIcon(IconData icon, double screenWidth, String url) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: Icon(icon, color: Colors.white, size: 22),
+      child: InkWell(
+        onTap: () async {
+          final Uri uri = Uri.parse(url);
+          if (await canLaunchUrl(uri)) {
+            await launchUrl(uri, mode: LaunchMode.externalApplication);
+          } else {
+            debugPrint("No se pudo abrir la URL: $url");
+          }
+        },
+        borderRadius:
+            BorderRadius.circular(50), // Para efecto circular en el toque
+
+        child: Icon(
+          icon,
+          color: Colors.white,
+          size:
+              screenWidth * 0.02, // Ajusta el tamaño del ícono en base al ancho
+        ),
+      ),
     );
   }
 }

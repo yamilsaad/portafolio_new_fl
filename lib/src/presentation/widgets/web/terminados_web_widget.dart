@@ -258,7 +258,7 @@ class _HoverableCard2State extends State<_HoverableCard2> {
               SizedBox(
                 width: _screenWidth * 0.4,
                 child: Text(
-                    'Dos aplicaciones de relevamiento de eventos en tiempo real. Por el momento esta app solo se usa de manera inerna y no está disponible en Play Store.',
+                    'Dos aplicaciones de relevamiento y abordaje de eventos en tiempo real. Por el momento esta app solo se usa de manera inerna y no está disponible en Play Store.',
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontWeight: FontWeight.bold)),
               ),

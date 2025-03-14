@@ -1,6 +1,8 @@
-import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shimmer/shimmer.dart';
+import 'dart:math';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -21,7 +23,7 @@ class _SecondWebViewState extends State<SecondWebView> {
     return Container(
       color: Theme.of(context).colorScheme.surface, // Color de fondo dinámico
       width: _screenWidth,
-      height: _screenHeight * 0.75,
+      height: _screenHeight * 0.6,
       child: VisibilityDetector(
         key: Key('second_view'),
         onVisibilityChanged: (info) {
@@ -124,6 +126,7 @@ class CircleAvatarWidget extends StatefulWidget {
 
 class _CircleAvatarWidgetState extends State<CircleAvatarWidget> {
   bool isShimmering = true;
+  bool isFlipped = false; // Controla si el avatar está volteado o no
 
   @override
   void initState() {
@@ -139,36 +142,67 @@ class _CircleAvatarWidgetState extends State<CircleAvatarWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: Duration(milliseconds: 1300),
-      curve: Curves.fastOutSlowIn,
-      width: widget.screenWidth * 0.4, // Tamaño triplicado
-      height: widget.screenHeight * 0.4, // Tamaño triplicado
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: isShimmering ? Colors.white : Color(0xff21E6C1),
-          width: 3,
-        ),
-      ),
-      child: ClipOval(
-        child: Stack(
-          children: [
-            if (isShimmering)
-              Shimmer.fromColors(
-                period: Duration(milliseconds: 1500),
-                baseColor: Color(0xff21E6C1)!,
-                highlightColor: Colors.indigo.shade400!,
-                child: CircleAvatar(
-                  radius: widget.screenWidth * 0.4, // Tamaño triplicado
-                ),
-              )
-            else
-              CircleAvatar(
-                radius: widget.screenWidth * 0.4, // Tamaño triplicado
-                backgroundImage: AssetImage('assets/img/photos/avatar.webp'),
-              ),
-          ],
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      //onEnter: (_) => setState(() => _isHovered = true),
+      //onExit: (_) => setState(() => isHovered = false),
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            isFlipped = !isFlipped; // Cambia el estado de voltear el avatar
+          });
+        },
+        child: AnimatedContainer(
+          duration: Duration(milliseconds: 1000),
+          curve: Curves.fastOutSlowIn,
+          width: widget.screenWidth * 0.4,
+          height: widget.screenHeight * 0.4,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: isShimmering ? Colors.white : Color(0xff21E6C1),
+              width: 3,
+            ),
+          ),
+          child: ClipOval(
+            child: Stack(
+              children: [
+                if (isShimmering)
+                  Shimmer.fromColors(
+                    period: Duration(milliseconds: 1700),
+                    baseColor: Color(0xff21E6C1)!,
+                    highlightColor: Colors.indigo.shade400!,
+                    child: CircleAvatar(
+                      radius: widget.screenWidth * 0.4,
+                    ),
+                  )
+                else
+                  AnimatedSwitcher(
+                    duration: Duration(milliseconds: 1500),
+                    transitionBuilder:
+                        (Widget child, Animation<double> animation) {
+                      return RotationTransition(
+                        turns: animation,
+                        child: child,
+                      );
+                    },
+                    child: isFlipped
+                        ? CircleAvatar(
+                            key: ValueKey(1), // Cambia la imagen al voltear
+                            radius: widget.screenWidth * 0.4,
+                            backgroundImage:
+                                AssetImage('assets/img/photos/avatar2.webp'),
+                          )
+                        : CircleAvatar(
+                            key: ValueKey(0), // Imagen original
+                            radius: widget.screenWidth * 0.4,
+                            backgroundImage:
+                                AssetImage('assets/img/photos/avatar.webp'),
+                          ),
+                  ),
+              ],
+            ),
+          ),
         ),
       ),
     );

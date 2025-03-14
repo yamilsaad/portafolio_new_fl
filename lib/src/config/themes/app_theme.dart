@@ -5,7 +5,7 @@ class AppTheme {
       useMaterial3: true,
       fontFamily: "SpaceGrotesk",
       colorScheme: ColorScheme.fromSeed(
-        seedColor: Color(0xffC8ACD6),
+        seedColor: Color(0xff21E6C1),
         surface: Color(0xff4D55CC), // Fondo para el tema claro
       ),
       appBarTheme: AppBarTheme(

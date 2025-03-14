@@ -11,6 +11,17 @@ class SkillWebView extends StatefulWidget {
 
 class _SkillWebViewState extends State<SkillWebView> {
   bool _isVisible = false;
+
+  static const List<String> _skills = [
+    "Dart",
+    "Flutter",
+    "Firebase",
+    "Python",
+    "Flask",
+    "Angular",
+    "React",
+  ];
+
   @override
   Widget build(BuildContext context) {
     final _screenHeight = MediaQuery.of(context).size.height;
@@ -40,7 +51,7 @@ class _SkillWebViewState extends State<SkillWebView> {
                           FadeIn(
                             duration: Duration(milliseconds: 1200),
                             child: Text(
-                              'Mis Skills',
+                              'Mi Stack',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: _screenWidth * 0.03,
@@ -58,28 +69,41 @@ class _SkillWebViewState extends State<SkillWebView> {
                               ),
                             ),
                           ),
-                          FadeInUp(
-                            duration: Duration(milliseconds: 1500),
-                            child: Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: Container(
-                                width: _screenWidth * 0.3,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    border: Border.all(
-                                        color: Color(0xff21E6C1), width: 2.0)),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Text(
-                                    'Todas mis Skills.',
-                                    style: TextStyle(
-                                      fontSize: _screenWidth * 0.013,
-                                      fontWeight: FontWeight.w600,
+                          SizedBox(
+                            height: _screenHeight * 0.6,
+                            width: _screenWidth * 0.28,
+                            child: ListView.builder(
+                              itemCount: _skills.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  margin: EdgeInsets.symmetric(vertical: 5),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      border: Border.all(
+                                          color: Color(0xff21E6C1),
+                                          width: 2.0)),
+                                  child: ListTile(
+                                    title: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Text(
+                                        _skills[index],
+                                        style: TextStyle(
+                                          fontSize: _screenWidth * 0.013,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                        textAlign: TextAlign.justify,
+                                      ),
                                     ),
-                                    textAlign: TextAlign.justify,
                                   ),
-                                ),
-                              ),
+                                );
+                              },
+                            ),
+                          ),
+                          SizedBox(
+                            width: _screenWidth * 0.3,
+                            child: Divider(
+                              height: _screenHeight * 0.05,
+                              color: Color(0xff21E6C1),
                             ),
                           ),
                         ],

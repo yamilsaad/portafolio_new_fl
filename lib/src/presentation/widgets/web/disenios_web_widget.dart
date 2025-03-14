@@ -32,7 +32,8 @@ class DiseniosWebWidget extends StatelessWidget {
                   imageUrl: 'assets/img/photos/banner_portafolio10.webp',
                   screenWidth: _screenWidth,
                   screenHeight: _screenHeight,
-                  subtitle: 'Diseño y re diseño de logos y marcas.',
+                  subtitle:
+                      'Diseño y re diseño de logos y marcas. Creación de contenido.',
                   alertUrl: 'assets/img/photos/banner_portafolio9.webp',
                 ),
                 _HoverableCard(
@@ -192,11 +193,15 @@ class _HoverableCard2State extends State<_HoverableCard2> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                widget.alertUrl,
-                fit: BoxFit.cover,
-                width: _screenWidth * 0.75,
-                height: _screenHeight * 0.65,
+              Container(
+                decoration:
+                    BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+                child: Image.asset(
+                  widget.alertUrl,
+                  fit: BoxFit.cover,
+                  width: _screenWidth * 0.7,
+                  height: _screenHeight * 0.7,
+                ),
               ),
               SizedBox(height: _screenHeight * 0.015),
               SizedBox(
