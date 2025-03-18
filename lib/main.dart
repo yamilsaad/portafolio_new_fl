@@ -6,10 +6,12 @@ import 'package:portafolio_new_fl/src/core/shared/theme_preference_shared.dart';
 import 'package:portafolio_new_fl/src/data/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'src/data/controllers/controller.dart';
+
 void main() async {
   await ThemeSharedPreference.init(); // Inicializar SharedPreferences
   //Inicialización de controladores:
-  //Get.put(WhatsAppController()); //Controller para mostrar video del storage
+  Get.put(WhatsAppController()); //Controller para mostrar video del storage
 
   runApp(const MyApp());
 }

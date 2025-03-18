@@ -2,14 +2,15 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
-class ExperienciaWebWidget extends StatefulWidget {
-  ExperienciaWebWidget({super.key});
+class ExperienciaMobileWidget extends StatefulWidget {
+  ExperienciaMobileWidget({super.key});
 
   @override
-  State<ExperienciaWebWidget> createState() => _ExperienciaWebWidgetState();
+  State<ExperienciaMobileWidget> createState() =>
+      _ExperienciaMobileWidgetState();
 }
 
-class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
+class _ExperienciaMobileWidgetState extends State<ExperienciaMobileWidget> {
   bool _isVisible = false;
   final List<Map<String, dynamic>> scrumSteps = [
     {
@@ -54,7 +55,7 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
     final _screenHeight = MediaQuery.of(context).size.height;
     final _screenWidth = MediaQuery.of(context).size.width;
     return VisibilityDetector(
-      key: Key('scrum_desktop'),
+      key: Key('scrum_mobile'),
       onVisibilityChanged: (info) {
         if (info.visibleFraction > 0.2) {
           setState(() {
@@ -64,19 +65,19 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
       },
       child: _isVisible
           ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     FadeIn(
                       duration: const Duration(milliseconds: 1000),
                       child: Text(
                         "Mi experiencia laboral",
                         style: TextStyle(
-                            fontSize: _screenWidth * 0.03,
+                            fontSize: _screenWidth * 0.085,
                             fontFamily: "Ruik",
                             fontWeight: FontWeight.bold),
                       ),
@@ -84,7 +85,7 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
                     FadeIn(
                       duration: Duration(milliseconds: 1200),
                       child: SizedBox(
-                        width: _screenWidth * 0.3,
+                        width: _screenWidth * 0.75,
                         child: Divider(
                           height: _screenHeight * 0.05,
                           color: Color(0xff21E6C1),
@@ -97,7 +98,7 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
                       child: Row(
                         children: [
                           SizedBox(
-                            width: _screenWidth * 0.75,
+                            width: _screenWidth * 0.8,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,7 +140,7 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
                                             Text(
                                               step["title"],
                                               style: TextStyle(
-                                                fontSize: _screenWidth * 0.02,
+                                                fontSize: _screenWidth * 0.05,
                                                 fontWeight: FontWeight.bold,
                                                 fontFamily: 'Rubik',
                                               ),
@@ -147,7 +148,7 @@ class _ExperienciaWebWidgetState extends State<ExperienciaWebWidget> {
                                             Text(
                                               step["description"],
                                               style: TextStyle(
-                                                fontSize: _screenWidth * 0.016,
+                                                fontSize: _screenWidth * 0.035,
                                                 color: Color(0xff21E6C1),
                                               ),
                                             ),

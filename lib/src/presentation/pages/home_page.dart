@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:portafolio_new_fl/src/presentation/layouts/web/lighting_painter.dart';
 import 'package:provider/provider.dart';
 
 import 'package:portafolio_new_fl/src/data/providers/theme_provider.dart';
 
+import 'package:portafolio_new_fl/src/presentation/layouts/web/lighting_painter.dart';
+
 import '../components/component.dart';
+import '../views/mobile/mobile_view.dart';
 import '../views/view.dart';
 
 class HomePage extends StatefulWidget {
@@ -33,17 +35,22 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              height: _screenHeight * 0.08,
-              width: _screenWidth * 0.05,
+              height: _screenWidth > 600
+                  ? _screenHeight * 0.08
+                  : _screenHeight * 0.14, // Más grande en mobile
+              width: _screenWidth > 600
+                  ? _screenWidth * 0.05
+                  : _screenWidth * 0.17, // Más ancho en mobile
               child: Image.asset(
                 'assets/img/icons/logo_1.png',
                 fit: BoxFit.contain,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10.0),
-              child: ThemeswitchWebComponent(themeProvider: themeProvider),
-            )
+            if (_screenWidth > 600) // Solo se muestra en desktop/tablet
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: ThemeswitchWebComponent(themeProvider: themeProvider),
+              )
           ],
         ),
       ),
@@ -54,13 +61,9 @@ class _HomePageState extends State<HomePage> {
           return _MobileView();
         }
       }),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: FaIcon(
-          FontAwesomeIcons.whatsapp,
-          size: _screenWidth * 0.03,
-        ),
-      ),
+      floatingActionButton: MediaQuery.of(context).size.width > 600
+          ? FabWebComponent() // FAB para escritorio
+          : FabMobileComponent(), // FAB para móvil
     );
   }
 }
@@ -134,11 +137,15 @@ class _MobileView extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          //InicioMobileView(),
+          InicioMobileView(),
+          SecondMobileView(),
+          ThirdMobileView(),
           //AsesoramientoMobileView(),
           //WebMobileView(),
           //ScrumMobileView(),
-          //FooterMobileView()
+          ExperienciaMobileView(),
+          SkillMobileView(),
+          FooterMobileView()
         ],
       ),
     );

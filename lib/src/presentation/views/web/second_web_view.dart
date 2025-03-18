@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:shimmer/shimmer.dart';
-import 'dart:math';
 
 import 'package:visibility_detector/visibility_detector.dart';
 
@@ -15,15 +13,25 @@ class SecondWebView extends StatefulWidget {
 
 class _SecondWebViewState extends State<SecondWebView> {
   bool _isVisible = false;
+  String infoText =
+      "Soy Técnico Superior en Programación y estudiante de la Licenciatura en Informática con amplia experiencia en desarrollo web y móvil, especializado en Flutter y tecnologías modernas. Me apasiona crear interfaces intuitivas, dinámicas y optimizadas para ofrecer experiencias de usuario excepcionales. Mi capacidad de análisis y resolución de problemas me permite desarrollar soluciones eficientes y escalables. Además, mis conocimientos en backend me brindan una visión integral del desarrollo, permitiéndome diseñar arquitecturas sólidas y bien estructuradas. Como freelancer, he trabajado en diversos proyectos, colaborando con clientes para transformar ideas en productos digitales impactantes. Siempre busco innovar y mejorar, aplicando buenas prácticas de desarrollo, optimización del rendimiento y accesibilidad. Mi objetivo es ofrecer soluciones tecnológicas de calidad, alineadas con las necesidades del mercado y los objetivos de cada proyecto.";
+  String activeButton = "Sobre mí";
+
+  void updateText(String newText, String buttonText) {
+    setState(() {
+      infoText = newText;
+      activeButton = buttonText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final _screenHeight = MediaQuery.of(context).size.height;
     final _screenWidth = MediaQuery.of(context).size.width;
     return Container(
-      color: Theme.of(context).colorScheme.surface, // Color de fondo dinámico
+      color: Theme.of(context).colorScheme.surface,
       width: _screenWidth,
-      height: _screenHeight * 0.6,
+      height: _screenHeight * 0.7,
       child: VisibilityDetector(
         key: Key('second_view'),
         onVisibilityChanged: (info) {
@@ -39,49 +47,63 @@ class _SecondWebViewState extends State<SecondWebView> {
                   Row(
                     children: [
                       SizedBox(width: _screenWidth * 0.075),
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: _screenWidth * 0.3,
-                            child: FadeIn(
-                              duration: Duration(milliseconds: 1200),
-                              child: CircleAvatarWidget(
-                                  screenWidth: _screenWidth,
-                                  screenHeight: _screenHeight),
-                            ),
-                          ),
-                          FadeIn(
-                            duration: Duration(milliseconds: 1200),
-                            child: Text(
-                              'Sobre mí',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: _screenWidth * 0.03,
-                                  fontFamily: "Ruik",
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                          FadeIn(
-                            duration: Duration(milliseconds: 1200),
-                            child: SizedBox(
+                      SizedBox(
+                        width: _screenWidth * 0.3,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(
                               width: _screenWidth * 0.3,
-                              child: Divider(
-                                height: _screenHeight * 0.05,
-                                color: Color(0xff21E6C1),
+                              child: FadeIn(
+                                duration: Duration(milliseconds: 1200),
+                                child: CircleAvatarWidget(
+                                    screenWidth: _screenWidth,
+                                    screenHeight: _screenHeight),
                               ),
                             ),
-                          )
-                        ],
+                            SizedBox(height: _screenHeight * 0.02),
+                            _CustomButton(
+                              text: "Sobre mí",
+                              onHover: () => updateText(
+                                  "Soy Técnico Superior en Programación y estudiante de la Licenciatura en Informática con amplia experiencia en desarrollo web y móvil, especializado en Flutter y tecnologías modernas. Me apasiona crear interfaces intuitivas, dinámicas y optimizadas para ofrecer experiencias de usuario excepcionales. Mi capacidad de análisis y resolución de problemas me permite desarrollar soluciones eficientes y escalables. Además, mis conocimientos en backend me brindan una visión integral del desarrollo, permitiéndome diseñar arquitecturas sólidas y bien estructuradas. Como freelancer, he trabajado en diversos proyectos, colaborando con clientes para transformar ideas en productos digitales impactantes. Siempre busco innovar y mejorar, aplicando buenas prácticas de desarrollo, optimización del rendimiento y accesibilidad. Mi objetivo es ofrecer soluciones tecnológicas de calidad, alineadas con las necesidades del mercado y los objetivos de cada proyecto.",
+                                  "Sobre mí"),
+                              isActive: activeButton == "Sobre mí",
+                            ),
+                            _CustomButton(
+                              text: "Mis hobbies",
+                              onHover: () => updateText(
+                                  "Me gusta programar, leer un buen libro, jugar videojuegos, ir al gimnasio y hacer actividades al aire libre. Además suelo disfrutar de caminatas solitarias, reuniones familiares, jugar con mis hijas y tomar mate o algún refresco con mis amigos más cercanos periodicamente.",
+                                  "Mis hobbies"),
+                              isActive: activeButton == "Mis hobbies",
+                            ),
+                            _CustomButton(
+                              text: "Voluntariados",
+                              onHover: () => updateText(
+                                  "Actualmente participo activamente como voluntario en Family Search. A través de una plataforma web, entre otras herramientas móviles, asesoro y asisto a personas que desean armar su árbol genealógico, buscar registros antiguos y crear recuerdos o historias para sus familias.",
+                                  "Voluntariados"),
+                              isActive: activeButton == "Voluntariados",
+                            ),
+                            FadeIn(
+                              duration: Duration(milliseconds: 1200),
+                              child: SizedBox(
+                                width: _screenWidth * 0.3,
+                                child: Divider(
+                                  height: _screenHeight * 0.05,
+                                  color: Color(0xff21E6C1),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                      SizedBox(
-                        width: _screenWidth * 0.075,
-                      ),
+                      SizedBox(width: _screenWidth * 0.075),
                       FadeInUp(
                         duration: Duration(milliseconds: 1500),
                         child: Padding(
                           padding: const EdgeInsets.all(20),
                           child: Container(
                             width: _screenWidth * 0.5,
+                            height: _screenHeight * 0.6,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
                                 border: Border.all(
@@ -89,12 +111,12 @@ class _SecondWebViewState extends State<SecondWebView> {
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
                               child: Text(
-                                'Soy Frontend Engineer con amplia experiencia en desarrollo web y móvil, especializado en Flutter y tecnologías modernas. Me apasiona crear interfaces intuitivas, dinámicas y optimizadas para ofrecer experiencias de usuario excepcionales. Mi capacidad de análisis y resolución de problemas me permite desarrollar soluciones eficientes y escalables. Además, mis conocimientos en backend me brindan una visión integral del desarrollo, permitiéndome diseñar arquitecturas sólidas y bien estructuradas. Como freelancer, he trabajado en diversos proyectos, colaborando con clientes para transformar ideas en productos digitales impactantes. Siempre busco innovar y mejorar, aplicando buenas prácticas de desarrollo, optimización del rendimiento y accesibilidad. Mi objetivo es ofrecer soluciones tecnológicas de calidad, alineadas con las necesidades del mercado y los objetivos de cada proyecto.',
+                                infoText,
                                 style: TextStyle(
-                                  fontSize: _screenWidth * 0.013,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                                textAlign: TextAlign.justify,
+                                    fontSize: _screenWidth * 0.014,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Rubik"),
+                                textAlign: TextAlign.left,
                               ),
                             ),
                           ),
@@ -201,6 +223,41 @@ class _CircleAvatarWidgetState extends State<CircleAvatarWidget> {
                           ),
                   ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CustomButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onHover;
+  final bool isActive;
+
+  const _CustomButton({
+    required this.text,
+    required this.onHover,
+    required this.isActive,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final _screenWidth = MediaQuery.of(context).size.width;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => onHover(),
+      child: GestureDetector(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: _screenWidth * 0.013,
+              fontWeight: FontWeight.w600,
+              color: isActive ? Color(0xff21E6C1) : Colors.white,
             ),
           ),
         ),

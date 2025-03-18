@@ -14,28 +14,20 @@ dependencies:
   animated_text_kit: ^4.2.3
   animated_toggle_switch: ^0.8.4
   animations: ^2.0.11
-  cloud_firestore: ^5.6.4
-  confetti: ^0.8.0
   cupertino_icons: ^1.0.6
-  dropdown_button2: ^2.3.9
-  firebase_auth: ^5.5.0
-  firebase_core: ^3.10.0
-  firebase_storage: ^12.4.0
   flutter:
     sdk: flutter
   flutter_animate: ^3.0.0 
   font_awesome_flutter: ^10.8.0
   get: ^4.6.6
-  intl_phone_number_input: ^0.7.4
-  libphonenumber_web: ^0.3.2
-  lucide_icons_flutter: ^1.2.7
-  mouse_parallax: ^1.1.0
   provider: ^6.1.2
   shared_preferences: ^2.0.15
   shimmer: ^3.0.0
   url_launcher: ^6.3.0
   video_player: ^2.9.2
   visibility_detector: ^0.4.0+2
+
+  
 
 dev_dependencies:
   flutter_lints: ^3.0.0
@@ -59,15 +51,7 @@ flutter:
     - assets/img/photos/
     - assets/videos/
   #   - images/a_dot_ham.jpeg
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
+
   fonts:
     - family: Rubik
       fonts:

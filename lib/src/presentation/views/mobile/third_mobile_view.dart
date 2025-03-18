@@ -2,16 +2,17 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
+import '../../widgets/mobile/widget.dart';
 import '../../widgets/web/widget.dart';
 
-class ThirdWebView extends StatefulWidget {
-  const ThirdWebView({super.key});
+class ThirdMobileView extends StatefulWidget {
+  const ThirdMobileView({super.key});
 
   @override
-  State<ThirdWebView> createState() => _ThirdWebViewState();
+  State<ThirdMobileView> createState() => _ThirdMobileViewState();
 }
 
-class _ThirdWebViewState extends State<ThirdWebView> {
+class _ThirdMobileViewState extends State<ThirdMobileView> {
   bool _isVisible = false;
 
   @override
@@ -20,10 +21,10 @@ class _ThirdWebViewState extends State<ThirdWebView> {
     final _screenWidth = MediaQuery.of(context).size.width;
     return Container(
       color: Theme.of(context).colorScheme.surface,
-      height: _screenHeight * 2,
+      height: _screenHeight * 1.8,
       width: _screenWidth,
       child: VisibilityDetector(
-        key: Key('third_view'),
+        key: Key('third_view_mobile'),
         onVisibilityChanged: (info) {
           if (info.visibleFraction > 0.2) {
             setState(() {
@@ -41,14 +42,13 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: _screenHeight * 0.025),
                         FadeIn(
                           duration: Duration(milliseconds: 1200),
                           child: Text(
                             'Mis trabajos',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontSize: _screenWidth * 0.03,
+                                fontSize: _screenWidth * 0.085,
                                 fontFamily: "Ruik",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -57,20 +57,20 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                           duration: Duration(milliseconds: 1200),
                           child: Container(
                             color: Color(0xff21E6C1),
-                            width: _screenWidth * 0.25,
+                            width: _screenWidth * 0.65,
                             child: Text(
                               'Proyectos terminados',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color(0xff433D8B),
-                                  fontSize: _screenWidth * 0.02,
+                                  fontSize: _screenWidth * 0.055,
                                   fontFamily: "Ruik",
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
-                        SizedBox(height: _screenHeight * 0.05),
-                        TerminadosWebWidget(
+                        SizedBox(height: _screenHeight * 0.025),
+                        TerminadosMobileWidget(
                             screenWidth: _screenWidth,
                             screenHeight: _screenHeight)
                       ],
@@ -86,7 +86,7 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                             'Mis colaboraciones',
                             textAlign: TextAlign.left,
                             style: TextStyle(
-                                fontSize: _screenWidth * 0.03,
+                                fontSize: _screenWidth * 0.085,
                                 fontFamily: "Ruik",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -95,20 +95,20 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                           duration: Duration(milliseconds: 1200),
                           child: Container(
                             color: Color(0xff21E6C1),
-                            width: _screenWidth * 0.25,
+                            width: _screenWidth * 0.65,
                             child: Text(
                               'Empresas',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color(0xff433D8B),
-                                  fontSize: _screenWidth * 0.02,
+                                  fontSize: _screenWidth * 0.055,
                                   fontFamily: "Ruik",
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
-                        SizedBox(height: _screenHeight * 0.05),
-                        ColaboracionesWebWidget(
+                        SizedBox(height: _screenHeight * 0.025),
+                        ColaboracionesMobileWidget(
                             screenWidth: _screenWidth,
                             screenHeight: _screenHeight)
                       ],
@@ -121,10 +121,10 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                         FadeIn(
                           duration: Duration(milliseconds: 1200),
                           child: Text(
-                            '¿En qué estoy trabajando?',
+                            'Actualidad',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: _screenWidth * 0.03,
+                                fontSize: _screenWidth * 0.085,
                                 fontFamily: "Ruik",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -133,20 +133,20 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                           duration: Duration(milliseconds: 1200),
                           child: Container(
                             color: Color(0xff21E6C1),
-                            width: _screenWidth * 0.25,
+                            width: _screenWidth * 0.65,
                             child: Text(
                               'Proyectos en proceso',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color(0xff433D8B),
-                                  fontSize: _screenWidth * 0.02,
+                                  fontSize: _screenWidth * 0.055,
                                   fontFamily: "Ruik",
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
-                        SizedBox(height: _screenHeight * 0.05),
-                        EnquestoyWebWidget(
+                        SizedBox(height: _screenHeight * 0.025),
+                        EnquestoyMobileWidget(
                             screenWidth: _screenWidth,
                             screenHeight: _screenHeight)
                       ],
@@ -162,7 +162,7 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                             'Diseño',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: _screenWidth * 0.03,
+                                fontSize: _screenWidth * 0.085,
                                 fontFamily: "Ruik",
                                 fontWeight: FontWeight.bold),
                           ),
@@ -171,20 +171,20 @@ class _ThirdWebViewState extends State<ThirdWebView> {
                           duration: Duration(milliseconds: 1200),
                           child: Container(
                             color: Color(0xff21E6C1),
-                            width: _screenWidth * 0.25,
+                            width: _screenWidth * 0.65,
                             child: Text(
                               'Logo y Marca - UI y UX',
                               textAlign: TextAlign.left,
                               style: TextStyle(
                                   color: Color(0xff433D8B),
-                                  fontSize: _screenWidth * 0.02,
+                                  fontSize: _screenWidth * 0.055,
                                   fontFamily: "Ruik",
                                   fontWeight: FontWeight.w500),
                             ),
                           ),
                         ),
-                        SizedBox(height: _screenHeight * 0.05),
-                        DiseniosWebWidget(
+                        SizedBox(height: _screenHeight * 0.025),
+                        DiseniosMobileWidget(
                             screenWidth: _screenWidth,
                             screenHeight: _screenHeight)
                       ],

@@ -15,11 +15,19 @@ class _SkillWebViewState extends State<SkillWebView> {
   static const List<String> _skills = [
     "Dart",
     "Flutter",
+    "GetX",
+    "SQL",
     "Firebase",
     "Python",
     "Flask",
     "Angular",
     "React",
+    "HTML",
+    "CSS",
+    "JS",
+    "Nginx",
+    "Git",
+    "Jira",
   ];
 
   @override
