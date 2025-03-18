@@ -36,7 +36,7 @@ class _SkillMobileViewState extends State<SkillMobileView> {
     final _screenWidth = MediaQuery.of(context).size.width;
     return Container(
       color: Theme.of(context).colorScheme.surface,
-      height: _screenHeight * 0.5,
+      height: _screenHeight * 0.6,
       width: _screenWidth,
       child: VisibilityDetector(
         key: Key('skill-mobile'),
