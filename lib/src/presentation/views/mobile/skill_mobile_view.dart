@@ -53,6 +53,9 @@ class _SkillMobileViewState extends State<SkillMobileView> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: _screenHeight * 0.02,
+                    ),
                     FadeIn(
                       duration: Duration(milliseconds: 1200),
                       child: Text(

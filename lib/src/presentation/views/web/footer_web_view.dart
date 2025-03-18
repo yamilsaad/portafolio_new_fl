@@ -86,7 +86,7 @@ class FooterWebView extends StatelessWidget {
           SizedBox(height: screenHeight * 0.015),
           Center(
             child: Text(
-              "© 2025 - Sitio diseñado y desarrollado por este desarrollador.",
+              "© 2025 - Sitio diseñado y desarrollado por Yamil Saad.",
               style: TextStyle(
                   color: Colors.white70, fontSize: screenWidth * 0.014),
             ),

@@ -108,15 +108,22 @@ class _SecondWebViewState extends State<SecondWebView> {
                                 borderRadius: BorderRadius.circular(10.0),
                                 border: Border.all(
                                     color: Color(0xff21E6C1), width: 2.0)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(
-                                infoText,
-                                style: TextStyle(
-                                    fontSize: _screenWidth * 0.014,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: "Rubik"),
-                                textAlign: TextAlign.left,
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              child: Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Text(
+                                      infoText,
+                                      style: TextStyle(
+                                          fontSize: _screenWidth * 0.014,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: "Rubik"),
+                                      textAlign: TextAlign.left,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),

@@ -76,16 +76,23 @@ class _SecondMobileViewState extends State<SecondMobileView> {
                             width: 2.0,
                           ),
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            infoTexts[selectedButton]!,
-                            style: TextStyle(
-                              fontSize: _screenWidth * 0.05,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: "Rubik",
-                            ),
-                            textAlign: TextAlign.left,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text(
+                                  infoTexts[selectedButton]!,
+                                  style: TextStyle(
+                                    fontSize: _screenWidth * 0.05,
+                                    fontWeight: FontWeight.w500,
+                                    fontFamily: "Rubik",
+                                  ),
+                                  textAlign: TextAlign.left,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

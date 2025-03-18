@@ -87,7 +87,7 @@ class FooterMobileView extends StatelessWidget {
           Center(
             child: Text(
               textAlign: TextAlign.left,
-              "© 2025 - Sitio diseñado y desarrollado por este desarrollador.",
+              "© 2025 - Sitio diseñado y desarrollado por Yamil Saad.",
               style: TextStyle(
                   color: Colors.white70, fontSize: screenWidth * 0.035),
             ),
